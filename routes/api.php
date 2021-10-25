@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
 // 	return $request->user();
 // });
 
-// Route::get('mahasiswa', [MahasiswaController::class, 'index']);
-// Route::post('mahasiswa', [MahasiswaController::class, 'create']);
+Route::get('mahasiswanoauth', [MahasiswaController::class, 'index']);
+Route::post('mahasiswanoauth', [MahasiswaController::class, 'create']);
 // Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
 // Route::delete('mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
