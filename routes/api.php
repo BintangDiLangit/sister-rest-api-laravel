@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\AuthController as AC;
+use App\Http\Controllers\API\MahasiswaController as APIMahasiswaController;
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,11 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-	return $request->user();
+Route::post('login', [AC::class, 'signin']);
+Route::post('register', [AC::class, 'signup']);
+
+Route::middleware('auth:sanctum')->group(function () {
+	Route::resource('mahasiswa', APIMahasiswaController::class);
 });
 
-Route::get('mahasiswa', [MahasiswaController::class, 'index']);
-Route::post('mahasiswa', [MahasiswaController::class, 'create']);
-Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
-Route::delete('mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
+
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+// 	return $request->user();
+// });
+
+// Route::get('mahasiswa', [MahasiswaController::class, 'index']);
+// Route::post('mahasiswa', [MahasiswaController::class, 'create']);
+// Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
+// Route::delete('mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
